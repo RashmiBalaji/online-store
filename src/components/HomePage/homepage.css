@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+.inventory-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-tile {
+  height: 50vh;
+  width: 35vh;
+  /* border: 2px solid black; */
+  margin: 5vh 10vh;
+}
