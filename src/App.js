@@ -19,7 +19,6 @@ const App = () => {
           <Route exact path='/cart' component={cartInfo}/>
         </Switch>
         </Router>
-      {/* <HomePage /> */}
     </>
   );
 };

@@ -3,14 +3,24 @@ import { Link, useParams, useLocation } from "react-router-dom";
 // import Button from '@material-ui/core/Button';
 import "../../App.css";
 import "./cartpage.css";
+import setCart from '../../components/HomePage/homepage.js'
+
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
-  const location = useLocation();
-  const { cart } = location.state.id;
-  console.log(cart, "from cartpage js")
+export default (props) => {
+//   const location = useLocation();
+//   console.log(location,"location")
+//   const { cart } = location.state.id;
+//   //const removeItem  = location.state.remove;
+//   console.log(cart, "from cartpage js")
+//   console.log(location.state.handler)
 
-  const cartList = cart.map((item) => (
+console.log(props.value)
+console.log(props)
+
+  
+
+  const cartList = props.value.map((item) => (
       <>
       <div className= "individual">
           <div className = "left">
@@ -19,6 +29,7 @@ export default () => {
        <div className="right">
        <h6>{item.title}</h6>
        <h6>{`${item.price}  Euros`}</h6>
+       <button onClick={() => props.removeFeature(item)}>Remove from Cart</button>
        </div>
        </div>
       </>

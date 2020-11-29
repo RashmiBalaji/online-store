@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./homepage.css";
+import CartPage from '../CartPage/cartpage.js'
 
 function HomePage() {
   const [inventories, setInventories] = useState([]);
   const [cart, setCart] = useState([]);
+  const [click, setClick] = useState(false)
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -16,8 +18,18 @@ function HomePage() {
       console.log("item added to cart")
       console.log(inventory)
       setCart([...cart,inventory])
-   
   }
+
+  function cartView () {
+      setClick(true)
+  }
+
+  function removeItem (inventory) {
+    console.log("remove item clicked",cart)
+    const filteredItems = cart.filter((item) => item.id !==inventory.id)
+    console.log(filteredItems,"after remove click")
+    setCart([...filteredItems])
+}
 
   const inventoryList = inventories.map((inventory) => (
     <>
@@ -28,7 +40,7 @@ function HomePage() {
         <button onClick={() => addToCart(inventory)}>Add to Cart</button>
         <Link
           className="details"
-          to={{ pathname: "/details", state: { id: { inventory } } }}
+          to={{ pathname: "/details", state: { id: { inventory }}}}
         >
           <button>DETAILS</button>
         </Link>
@@ -39,13 +51,22 @@ function HomePage() {
   return (
     <>
       <div>
-      <Link
+      {/* <Link
           className="CART"
-          to={{ pathname: "/cart", state: { id: { cart } } }}
+          to={{ pathname: "/cart", state: { id: { cart }}}}
         >
           <button>View cart</button>
-        </Link>
-        <ul className="inventory-list">{inventoryList}</ul>
+        </Link> */}
+        {/* <Link to={{pathname:"/cart"}}> */}
+        <button className="cart" onClick={cartView}>View Cart</button>
+        {/* </Link> */}
+        {click && (
+            <CartPage value={cart} removeFeature={removeItem}/>
+        )}
+        {!click && (
+            <ul className="inventory-list">{inventoryList}</ul>
+        )}
+        
       </div>
     </>
   );
