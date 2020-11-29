@@ -1,0 +1,21 @@
+.outer {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.individual {
+    display:flex;
+    /* margin: 5vh 5vh; */
+    height: fit-content;
+}
+
+.right {
+    margin-left: 10vh;
+}
+
+button {
+    align-items: center;
+}
+
