@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./homepage.css";
 
 function HomePage() {
   const [inventories, setInventories] = useState([]);
+  const [detail, setDetails] = useState(false);
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
@@ -16,6 +19,12 @@ function HomePage() {
         <h4>{inventory.title}</h4>
         <h3>{`${inventory.price} Euros`}</h3>
         <button>Add to Cart</button>
+        <Link
+          className="details"
+          to={{ pathname: "/details", state: { id: { inventory } } }}
+        >
+          <button>DETAILS</button>
+        </Link>
       </li>
     </>
   ));
