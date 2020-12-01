@@ -62,6 +62,8 @@ console.log(props,"props from homepage")
 const data = useSelector((store) => store.inventories)
 console.log(data,"data using use selector")
 
+
+
   const inventoryList = data.map((inventory) => (
     <>
       <li className="item-tile">
@@ -69,13 +71,14 @@ console.log(data,"data using use selector")
         <h4>{inventory.title}</h4>
         <h3>{`${inventory.price} Euros`}</h3>
         <button onClick={() => props.addProduct(inventory)}>Add to Cart</button>
+        {/* <button onClick={() => showDetails(inventory)}>Details</button> */}
         {/* <button onClick={() => dispatch({type:'cart/added', payload:inventory})}>Add to Cart</button> */}
-        {/* <Link
+        <Link
           className="details"
           to={{ pathname: "/details", state: { id: { inventory }}}}
         >
-          <button>DETAILS</button> */}
-        {/* </Link> */}
+          <button>DETAILS</button> 
+        </Link>
       </li>
     </>
   ));
@@ -98,7 +101,7 @@ console.log(data,"data using use selector")
             {/* <CartPage value={cart} removeFeature={removeItem}/> */}
         {/* )} */}
         {/* {!click && ( */}
-        <h2>FRom hompage</h2>
+        
             <ul className="inventory-list">{inventoryList}</ul>
         {/* )} */}
         
