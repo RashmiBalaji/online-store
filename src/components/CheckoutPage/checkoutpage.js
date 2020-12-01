@@ -11,19 +11,18 @@ export default () => {
 
   return (
     <>
+    <h2>Personal Information</h2>
      <form className="user-details">
          <input type="text" placeholder="Enter your first name"></input><br></br><br></br>
          <input type="text" placeholder="Enter your last name"></input><br></br><br></br>
          <input type="number" placeholder="Enter your contact number"></input><br></br><br></br>
          <textarea placeholder="Enter the shipping address"></textarea><br></br><br></br>
-          <input type="number" placeholder="Enter your card number here"></input><br></br><br></br>
-          <input type="number" placeholder="Enter CVV here"></input><br></br><br></br>
-         <Link  to="/orders">
-             {/* <h4>Do you want to continue with the payment</h4> */}
-            <button variant="contained" color="primary">
-              CONFIRM
-            </button>
-            </Link>
+         <Link to="/">
+         <button>CANCEL</button>
+         </Link>
+         <Link to="/billing">
+         <button>PROCEED TO PAY</button>
+         </Link>
      </form>
     </>
   );
