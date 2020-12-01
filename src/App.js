@@ -5,6 +5,7 @@ import "./App.css";
 import HomePage from "./components/HomePage/homepage.js";
 import ItemInfo from './components/DetailPage/detailpage.js'
 import CartPage from './components/CartPage/cartpage.js'
+import CheckoutPage from './components/CheckoutPage/checkoutpage.js'
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path='/' component={HomePage} />
           <Route exact path='/details' component={ItemInfo} /> 
           <Route exact path='/cart' component={CartPage}/>
+          <Route exact path='/checkout' component={CheckoutPage}/>
         </Switch>
         </Router>
     </>

@@ -110,6 +110,11 @@ function CartPage (props) {
               BACK TO HOMEPAGE
             </button>
           </Link>
+          <Link className="back" to="/checkout">
+            <button variant="contained" color="primary">
+              PROCEED TO CHECKOUT
+            </button>
+          </Link>
                 </div>  
             </div>
        )
