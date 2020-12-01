@@ -18,7 +18,7 @@ export default () => {
          <textarea placeholder="Enter the shipping address"></textarea><br></br><br></br>
           <input type="number" placeholder="Enter your card number here"></input><br></br><br></br>
           <input type="number" placeholder="Enter CVV here"></input><br></br><br></br>
-         <Link  to="/">
+         <Link  to="/orders">
              {/* <h4>Do you want to continue with the payment</h4> */}
             <button variant="contained" color="primary">
               CONFIRM

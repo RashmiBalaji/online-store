@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage/homepage.js";
 import ItemInfo from './components/DetailPage/detailpage.js'
 import CartPage from './components/CartPage/cartpage.js'
 import CheckoutPage from './components/CheckoutPage/checkoutpage.js'
+import OrderPage from './components/OrderPage/orderpage.js'
 import Navbar from "./components/Navbar";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path='/details' component={ItemInfo} /> 
           <Route exact path='/cart' component={CartPage}/>
           <Route exact path='/checkout' component={CheckoutPage}/>
+          <Route exact path='/orders' component={OrderPage}/>
         </Switch>
         </Router>
     </>
