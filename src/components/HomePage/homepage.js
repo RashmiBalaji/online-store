@@ -1,68 +1,60 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { createStore } from 'redux'
-import { getState , useDispatch, useSelector } from 'react-redux';
+import { createStore } from "redux";
+import { getState, useDispatch, useSelector } from "react-redux";
 import "./homepage.css";
-import CartPage from '../CartPage/cartpage.js'
-import store from '../../store/configureStore.js'
-import { connect } from 'react-redux'
-import { addProductToCart } from "../../actions/cartactions.js"
-
-
+import CartPage from "../CartPage/cartpage.js";
+import store from "../../store/configureStore.js";
+import { connect } from "react-redux";
+import { addProductToCart } from "../../actions/cartactions.js";
 
 function HomePage(props) {
-//   const [inventories, setInventories] = useState([]);
-//   //const [cart, setCart] = useState([]);
-//   const [click, setClick] = useState(false)
+  //   const [inventories, setInventories] = useState([]);
+  //   //const [cart, setCart] = useState([]);
+  //   const [click, setClick] = useState(false)
 
-//   const initialState = {
-//       cart: []
-//   }
+  //   const initialState = {
+  //       cart: []
+  //   }
 
-//   useEffect(() => {
-//     fetch("https://fakestoreapi.com/products")
-//       .then((res) => res.json())
-//       .then((res) => setInventories(res));
-//   }, []);
+  //   useEffect(() => {
+  //     fetch("https://fakestoreapi.com/products")
+  //       .then((res) => res.json())
+  //       .then((res) => setInventories(res));
+  //   }, []);
 
-//   const dispatch = useDispatch()
+  //   const dispatch = useDispatch()
 
-//   function addToCart (inventory) {
-//       console.log("item added to cart")
-//       console.log(inventory)
-//       setCart([...cart,inventory])
-//   }
+  //   function addToCart (inventory) {
+  //       console.log("item added to cart")
+  //       console.log(inventory)
+  //       setCart([...cart,inventory])
+  //   }
 
-//   function cartView () {
-//       setClick(true)
-//   }
+  //   function cartView () {
+  //       setClick(true)
+  //   }
 
-//   function removeItem (inventory) {
-//     console.log("remove item clicked",cart)
-//     const filteredItems = cart.filter((item) => item.id !==inventory.id)
-//     console.log(filteredItems,"after remove click")
-//     setCart([...filteredItems])
-// }
+  //   function removeItem (inventory) {
+  //     console.log("remove item clicked",cart)
+  //     const filteredItems = cart.filter((item) => item.id !==inventory.id)
+  //     console.log(filteredItems,"after remove click")
+  //     setCart([...filteredItems])
+  // }
 
+  //console.log("initial state",store.getState())
 
+  // store.dispatch({type: 'cart/added', payload: inventory})
+  // store.dispatch({type: 'cart/removed', payload: inventory})
 
+  //unsubscribe()
 
+  //const cartEl = document.getElementById('cart')
 
-//console.log("initial state",store.getState())
-
-// store.dispatch({type: 'cart/added', payload: inventory})
-// store.dispatch({type: 'cart/removed', payload: inventory})
-
-//unsubscribe()
-
-//const cartEl = document.getElementById('cart')
-
-console.log(store,"store")
-console.log(props,"props from homepage")
-const data = useSelector((store) => store.inventories)
-console.log(data,"data using use selector")
-
-
+  console.log(store, "store");
+  console.log(props, "props from homepage");
+  const data = useSelector((store) => store.inventories);
+  console.log(data, "data using use selector");
 
   const inventoryList = data.map((inventory) => (
     <>
@@ -73,9 +65,9 @@ console.log(data,"data using use selector")
         <button onClick={() => props.addProduct(inventory)}>Add to Cart</button>
         <Link
           className="details"
-          to={{ pathname: "/details", state: { id: { inventory }}}}
+          to={{ pathname: "/details", state: { id: { inventory } } }}
         >
-          <button>DETAILS</button> 
+          <button>DETAILS</button>
         </Link>
       </li>
     </>
@@ -84,47 +76,24 @@ console.log(data,"data using use selector")
   return (
     <>
       <div>
-       <Link
-          className="CART"
-          to={{ pathname: "/cart"}}
-          //to={{ pathname: "/cart", state: { id: { store }}}}
-        >
-          <button>View cart</button>
-        </Link> 
-
-
-         {/* <Link to={{pathname:"/cart"}}>
-        <button className="cart" onClick={() => dispatch({type:'', payload:item})}>View Cart</button> */}
-        {/* </Link> */}
-        {/* {click && ( */}
-            {/* <CartPage value={cart} removeFeature={removeItem}/> */}
-        {/* )} */}
-        {/* {!click && ( */}
-        
-            <ul className="inventory-list">{inventoryList}</ul>
-        {/* )} */}
-        
+        <ul className="inventory-list">{inventoryList}</ul>
       </div>
     </>
   );
 }
 
-const mapStateToProps = state => {
-    return {
-      products: state.products
-    };
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
   };
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-      addProduct: product => dispatch(addProductToCart(product))
-    };
-  };
-  
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(HomePage);
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProduct: (product) => dispatch(addProductToCart(product)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 //export default HomePage;

@@ -99,9 +99,9 @@ function CartPage (props) {
                 <p>Nothing.</p>
              )
        return(
-            <div className="container">
+            <div>
                 <div className="cart">
-                    <h5>You have ordered:</h5>
+                    <h5>You have added following items to cart</h5>
                     <ul className="collection">
                         {addedItems}
                     </ul>

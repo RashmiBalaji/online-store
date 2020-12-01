@@ -14,10 +14,9 @@ const App = () => {
   return (
     <>
      <Router>
-     <h1>MARKETPLACE</h1>
-      {/* <HomePage/>
-      <CartPage/> */}
-      {/* <Navbar/> */}
+     {/* <h1>MARKETPLACE</h1> */}
+      
+      <Navbar/>
      
       <Switch>
       

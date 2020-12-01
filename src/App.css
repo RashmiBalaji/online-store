@@ -1,3 +1,34 @@
-h1 {
-  text-align: center;
+.container {
+  background-color: slategrey;
+ 
+  padding-top:3vh;
+  padding-bottom:3vh;
+  
+}
+
+.container h1 {
+  margin-top:5vh;
+  margin-left:40vh;
+display: inline;
+}
+
+.container ul {
+  margin:0;
+  padding:0;
+  float:right;
+  list-style-type:none;
+  text-align:right;
+}
+.right {
+list-style: none;
+}
+
+.right li {
+  display: inline;
+  padding-left: 10px;
+  
+}
+
+.right li a {
+  text-decoration: none;
 }
