@@ -105,6 +105,11 @@ function CartPage (props) {
                     <ul className="collection">
                         {addedItems}
                     </ul>
+                    <Link className="back" to="/">
+            <button variant="contained" color="primary">
+              BACK TO HOMEPAGE
+            </button>
+          </Link>
                 </div>  
             </div>
        )

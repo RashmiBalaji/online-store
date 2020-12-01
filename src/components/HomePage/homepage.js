@@ -71,8 +71,6 @@ console.log(data,"data using use selector")
         <h4>{inventory.title}</h4>
         <h3>{`${inventory.price} Euros`}</h3>
         <button onClick={() => props.addProduct(inventory)}>Add to Cart</button>
-        {/* <button onClick={() => showDetails(inventory)}>Details</button> */}
-        {/* <button onClick={() => dispatch({type:'cart/added', payload:inventory})}>Add to Cart</button> */}
         <Link
           className="details"
           to={{ pathname: "/details", state: { id: { inventory }}}}
@@ -86,12 +84,13 @@ console.log(data,"data using use selector")
   return (
     <>
       <div>
-       {/* <Link
+       <Link
           className="CART"
-          to={{ pathname: "/cart", state: { id: { store }}}}
+          to={{ pathname: "/cart"}}
+          //to={{ pathname: "/cart", state: { id: { store }}}}
         >
           <button>View cart</button>
-        </Link>  */}
+        </Link> 
 
 
          {/* <Link to={{pathname:"/cart"}}>
