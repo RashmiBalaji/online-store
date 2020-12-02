@@ -1,11 +1,21 @@
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
-// import Button from '@material-ui/core/Button';
+import { useLocation } from "react-router-dom";
 import "../../App.css";
 import "./detailpage.css";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  const classes = useStyles();
   const location = useLocation();
   const { inventory } = location.state.id;
 
@@ -17,15 +27,20 @@ export default () => {
         </div>
         <div className="right">
           <h1>{inventory.title}</h1>
-          {/* <h3>{inventory.category}</h3>
-          <p>{inventory.description}</p> */}
+          <h3>Category: {inventory.category}</h3>
+          <p>{inventory.description}</p>
           <h2>{`${inventory.price}  Euros`}</h2>
-
-          <Link className="back" to="/">
-            <button variant="contained" color="primary">
-              BACK
-            </button>
-          </Link>
+          <div className={classes.root}>
+            <Button
+              style={{ margin: "0px 5px 10px 0px" }}
+              variant="contained"
+              color="primary"
+              size="medium"
+              href="/"
+            >
+              BACK TO HOMEPAGE
+            </Button>
+          </div>
         </div>
       </div>
     </>

@@ -1,55 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { createStore } from "redux";
-import { getState, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./homepage.css";
-import CartPage from "../CartPage/cartpage.js";
 import store from "../../store/configureStore.js";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../actions/cartactions.js";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 function HomePage(props) {
-  //   const [inventories, setInventories] = useState([]);
-  //   //const [cart, setCart] = useState([]);
-  //   const [click, setClick] = useState(false)
-
-  //   const initialState = {
-  //       cart: []
-  //   }
-
+  const classes = useStyles();
   //   useEffect(() => {
   //     fetch("https://fakestoreapi.com/products")
   //       .then((res) => res.json())
   //       .then((res) => setInventories(res));
   //   }, []);
-
-  //   const dispatch = useDispatch()
-
-  //   function addToCart (inventory) {
-  //       console.log("item added to cart")
-  //       console.log(inventory)
-  //       setCart([...cart,inventory])
-  //   }
-
-  //   function cartView () {
-  //       setClick(true)
-  //   }
-
-  //   function removeItem (inventory) {
-  //     console.log("remove item clicked",cart)
-  //     const filteredItems = cart.filter((item) => item.id !==inventory.id)
-  //     console.log(filteredItems,"after remove click")
-  //     setCart([...filteredItems])
-  // }
-
-  //console.log("initial state",store.getState())
-
-  // store.dispatch({type: 'cart/added', payload: inventory})
-  // store.dispatch({type: 'cart/removed', payload: inventory})
-
-  //unsubscribe()
-
-  //const cartEl = document.getElementById('cart')
 
   console.log(store, "store");
   console.log(props, "props from homepage");
@@ -62,13 +35,28 @@ function HomePage(props) {
         <img src={inventory.image} alt="pics" width="200" height="150" />
         <h4>{inventory.title}</h4>
         <h3>{`${inventory.price} Euros`}</h3>
-        <button onClick={() => props.addProduct(inventory)}>Add to Cart</button>
-        <Link
-          className="details"
-          to={{ pathname: "/details", state: { id: { inventory } } }}
-        >
-          <button>DETAILS</button>
-        </Link>
+        <div className={classes.root}>
+          <div className="buttons">
+            <Button
+              style={{ margin: "0px 5px 10px 0px" }}
+              onClick={() => props.addProduct(inventory)}
+              variant="contained"
+              color="primary"
+              size="small"
+            >
+              Add to cart
+            </Button>
+
+            <Link
+              className="details"
+              to={{ pathname: "/details", state: { id: { inventory } } }}
+            >
+              <Button variant="contained" color="primary" size="small">
+                Details
+              </Button>
+            </Link>
+          </div>
+        </div>
       </li>
     </>
   ));
@@ -95,5 +83,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
-
-//export default HomePage;

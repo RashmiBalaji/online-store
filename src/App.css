@@ -1,9 +1,14 @@
 .container {
   background-color: slategrey;
- 
   padding-top:3vh;
   padding-bottom:3vh;
-  
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.container:scroll {
+ position:sticky;
 }
 
 .container h1 {
