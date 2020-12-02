@@ -1,30 +1,65 @@
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
-// import Button from '@material-ui/core/Button';
+
 import "../../App.css";
-//import "./detailpage.css";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(2),
+      width: "30ch",
+      display: "flex",
+      flexWrap: "wrap",
+    },
+  },
+}));
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
-//   const location = useLocation();
-//   const { inventory } = location.state.id;
+  const classes = useStyles();
 
   return (
     <>
-    <h2>Billing</h2>
-     <form className="user-details">
-          <input type="number" placeholder="Enter your card number here"></input><br></br><br></br>
-          <input type="number" placeholder="Enter CVV here"></input><br></br><br></br>
-         <Link  to="/orders">
-             {/* <h4>Do you want to continue with the payment</h4> */}
-            <button variant="contained" color="primary">
+      <h2 className="checkout">Billing</h2>
+      <div className="form">
+        <form className={classes.root}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Enter your card number here"
+            variant="outlined"
+          />
+          <TextField
+            required
+            id="outlined-required"
+            label="Enter CVV here"
+            variant="outlined"
+          />
+          <div class="buttons">
+            <Button
+              style={{ width: "100px", margin: "5px 10px 10px 10px" }}
+              variant="contained"
+              size="large"
+              color="secondary"
+              href="/orders"
+            >
               CONFIRM
-            </button>
-            </Link>
-            <Link to="/">
-         <button>CANCEL</button>
-         </Link>
-     </form>
+            </Button>
+
+            <Button
+              style={{ width: "100px", margin: "5px 10px 10px 10px" }}
+              variant="contained"
+              size="large"
+              color="secondary"
+              href="/"
+            >
+              CANCEL
+            </Button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

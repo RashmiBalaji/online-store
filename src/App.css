@@ -32,3 +32,19 @@ list-style: none;
 .right li a {
   text-decoration: none;
 }
+
+.form {
+  display:flex;
+  justify-content: center;
+
+}
+
+.checkout{
+text-align:center
+}
+
+.buttons {
+  display: flex;
+  margin-right: auto;
+  /* flex-direction: column; */
+}
