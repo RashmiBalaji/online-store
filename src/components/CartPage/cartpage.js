@@ -82,7 +82,7 @@ function CartPage(props) {
   let addedItems = data.length ? (
     data.map((item) => {
       return (
-          <Box sx={{border:'1px dashed gray'}} clone>
+
 <li className= "individual-cart">         
 <div className = "left-cart">
             <img src={item.image} alt="pics" width="100" height="100" />
@@ -100,7 +100,6 @@ function CartPage(props) {
             <Button variant="contained" size="small" color="secondary" onClick={() => props.removeProduct(item)}>Remove</Button>
           </div>
         </li>
-        </Box>
       );
     })
   ) : (
