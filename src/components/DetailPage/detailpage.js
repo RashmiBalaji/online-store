@@ -4,6 +4,7 @@ import "../../App.css";
 import "./detailpage.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,15 +32,19 @@ export default () => {
           <p>{inventory.description}</p>
           <h2>{`${inventory.price}  Euros`}</h2>
           <div className={classes.root}>
+          <Link to={{
+    pathname:"/"
+}}>
             <Button
               style={{ margin: "0px 5px 10px 0px" }}
               variant="contained"
               color="primary"
               size="medium"
-              href="/"
+             
             >
               BACK TO HOMEPAGE
             </Button>
+            </Link>
           </div>
         </div>
       </div>

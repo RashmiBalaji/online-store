@@ -18,7 +18,9 @@ const initialState = {
 //   {id:6,title:'Blues', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:90},
 // ],
 inventories:db.items,
-  cart: []
+  cart: [],
+  underPlacement: [],
+  orders:[]
 }
 
 const store = configureStore(initialState)

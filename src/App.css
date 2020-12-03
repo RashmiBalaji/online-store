@@ -53,3 +53,7 @@ text-align:center
   margin-right: auto;
   /* flex-direction: column; */
 }
+
+.horiz-menu > div {
+  display: inline;
+}

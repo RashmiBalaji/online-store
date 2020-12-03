@@ -29,12 +29,15 @@ function HomePage(props) {
   const data = useSelector((store) => store.inventories);
   console.log(data, "data using use selector");
 
+  const cartdata = useSelector((store) => store.cart);
+  console.log(cartdata, "cart data from homepage");
+
   const inventoryList = data.map((inventory) => (
     <>
       <li className="item-tile">
         <img src={inventory.image} alt="pics" width="200" height="150" />
         <h4>{inventory.title}</h4>
-        <h3>{`${inventory.price} Euros`}</h3>
+        <h5>{`${inventory.price} Euros`}</h5>
         <div className={classes.root}>
           <div className="buttons">
             <Button
@@ -63,9 +66,10 @@ function HomePage(props) {
 
   return (
     <>
-      <div>
+      <div className="container-homepage">
         <ul className="inventory-list">{inventoryList}</ul>
       </div>
+      
     </>
   );
 }

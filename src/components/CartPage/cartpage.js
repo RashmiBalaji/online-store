@@ -1,11 +1,10 @@
 // import React from "react";
-// import { Link, useParams, useLocation } from "react-router-dom";
+ import { Link, Redirect, useParams, useLocation } from "react-router-dom";
 // import { useDispatch } from 'react-redux';
 // // import Button from '@material-ui/core/Button';
 // import "../../App.css";
-// import "./cartpage.css";
+import "./cartpage.css";
 // import setCart from '../../components/HomePage/homepage.js'
-
 
 // // eslint-disable-next-line import/no-anonymous-default-export
 // export default () => {
@@ -15,8 +14,6 @@
 // //   //const removeItem  = location.state.remove;
 // //   console.log(cart, "from cartpage js")
 // //   console.log(location.state.handler)
-
-
 
 //   const dispatch = useDispatch()
 
@@ -38,7 +35,7 @@
 
 //   return (
 //     <>
-    
+
 //       {/* <Link className="back" to="/">
 //             <button variant="contained" color="primary">
 //               BACK
@@ -51,89 +48,101 @@
 //   );
 // };
 
-import React, { Component } from 'react';
-import { connect, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { connect, useSelector } from "react-redux";
+//import { Link } from "react-router-dom";
 
-import store from '../../store/configureStore.js'
-import { removeProductFromCart } from "../../actions/cartactions.js"
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
-function CartPage (props) {
+import store from "../../store/configureStore.js";
+import { removeProductFromCart } from "../../actions/cartactions.js";
+import Box from '@material-ui/core/Box';
 
-    console.log(props,"props from cart page")
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(2),
+      width: "30ch",
+      display: "flex",
+      flexWrap: "wrap",
+    },
+  },
+}));
 
-    const data = useSelector((store) => store.cart)
+function CartPage(props) {
+  const classes = useStyles();
+  console.log(props, "props from cart page");
 
-   console.log(data,"cart initial from cartpage")
-              
-        let addedItems = data.length ?
-            (  
-                data.map(item=>{
-                    return(
-                       
-                        <li className="collection-item avatar" key={item.id}>
-                                    <div className="item-img"> 
-                                        <img src={item.img} alt={item.img} className=""/>
-                                    </div>
-                                
-                                    <div className="item-desc">
-                                        <span className="title">{item.title}</span>
-                                        <p>{item.desc}</p>
-                                        <p><b>Price: {item.price}$</b></p> 
-                                        <p>
-                                            <b>Quantity: {item.quantity}</b> 
-                                        </p>
-                                        {/* <div className="add-remove">
-                                            <Link to="/cart"><i className="material-icons">arrow_drop_up</i></Link>
-                                            <Link to="/cart"><i className="material-icons">arrow_drop_down</i></Link>
-                                        </div> */}
-                                        <button onClick={() => props.removeProduct(item)}>Remove</button>
-                                    </div>
-                                    
-                               </li>                        
-                    )
-                })
-            ):
+  const data = useSelector((store) => store.cart);
 
-             (
-                <p>Nothing.</p>
-             )
-       return(
-            <div>
-                <div className="cart">
-                    <h5>You have added following items to cart</h5>
-                    <ul className="collection">
-                        {addedItems}
-                    </ul>
-                    <Link className="back" to="/">
-            <button variant="contained" color="primary">
-              BACK TO HOMEPAGE
-            </button>
+  console.log(data, "cart initial from cartpage");
+
+  let addedItems = data.length ? (
+    data.map((item) => {
+      return (
+          <Box sx={{border:'1px dashed gray'}} clone>
+<li className= "individual-cart">         
+<div className = "left-cart">
+            <img src={item.image} alt="pics" width="100" height="100" />
+          </div>
+
+          <div className="right-cart">
+            <h5 className="title">{item.title}</h5>
+            <h6>
+              <b>Price: {item.price}$</b>
+            </h6>
+            <h6>
+              <b>Quantity: {item.quantity}</b>
+              </h6>
+           
+            <Button variant="contained" size="small" color="secondary" onClick={() => props.removeProduct(item)}>Remove</Button>
+          </div>
+        </li>
+        </Box>
+      );
+    })
+  ) : (
+    <p>Nothing.</p>
+  );
+  return (
+    <div class="outer-container-cart">
+        <h5>You have added following items to cart</h5>
+        <div className="container-cart">
+        <ul className="cart-list">{addedItems}</ul>
+        </div>
+        <div className={classes.root}>
+            <div className="buttons">
+          <Button variant="contained"  style={{ margin: "0px 2vh 0px 0px" }} href="/" size="small" color="primary">
+            CANCEL
+          </Button>
+<Link to={{
+    pathname:"/checkout",
+    // state: {cartItems: addedItems}
+}}>
+<Button variant="contained" size="small" color="primary">
+            PROCEED TO CHECKOUT
+          </Button>
           </Link>
-          <Link className="back" to="/checkout">
-            <button variant="contained" color="primary">
-              PROCEED TO CHECKOUT
-            </button>
-          </Link>
-                </div>  
-            </div>
-       )
-    
+          
+          </div>
+        </div>
+      
+    </div>
+  );
 }
 
-const mapStateToProps = (state)=>{
-    return{
-        items: state.addedItems
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-      removeProduct: product => dispatch(removeProductFromCart(product))
-    };
+const mapStateToProps = (state) => {
+  return {
+    items: state.addedItems,
   };
+};
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-    )(CartPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeProduct: (product) => dispatch(removeProductFromCart(product)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

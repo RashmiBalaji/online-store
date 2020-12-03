@@ -71,7 +71,8 @@ export default (state = [], action) => {
           console.log(action.product,"product being added to cart")
           return {
               ...state,
-              cart:[...state.cart, action.product]
+              cart:[...state.cart, action.product],
+              
           }
       }
       return state.cart.map(p => {
@@ -85,9 +86,16 @@ export default (state = [], action) => {
         const filteredItems = state.cart.filter(p=> p.id !== itemToRemove.id)
       return {
           ...state,
-          cart:[...filteredItems]
-        // ...state.slice(0, action.index),
-        // ...state.slice(action.index + 1)
+          cart:[...filteredItems],
+          
+      
+  };
+  case actionTypes.PLACE_ORDER:
+        const orderedItems = state.cart.slice(0)
+      return {
+          ...state,
+          cart:[],
+          orders:[...orderedItems]
   };
     default:
       return state;

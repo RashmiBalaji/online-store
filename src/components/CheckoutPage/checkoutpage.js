@@ -5,6 +5,10 @@ import "../../App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { connect,useSelector } from "react-redux";
+import store from "../../store/configureStore.js";
+import { Link, Redirect, useParams, useLocation } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +22,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+function Checkout (props) {
   const classes = useStyles();
+
+  console.log(props.location.state,"cart from checkout page using redirect")
+  console.log(store,"store from checkout page")
+  const data = useSelector((store) => store.cart);
+
+  console.log(data, "cart initial from checkout page");
 
   return (
     <>
-      <h2 className="checkout">Personal Information</h2>
-      <div className="form">
+    <div style={{paddingTop:"10vh"}}>
+      <h2 className="checkout" >Personal Information</h2>
+      <div className="form" >
         <form className={classes.root}>
           <TextField
             required
@@ -69,7 +80,9 @@ export default () => {
             >
               CANCEL
             </Button>
-
+<Link to={{
+    pathname:"/billing"
+}}>
             <Button
               style={{ width: "100px", margin: "5px 10px 10px 10px" }}
               variant="contained"
@@ -79,9 +92,28 @@ export default () => {
             >
               CONTINUE
             </Button>
+            </Link>
           </div>
         </form>
+      </div>
       </div>
     </>
   );
 };
+
+
+// const mapStateToProps = (state) => {
+//     return {
+//       items: state.ordersPlaced,
+//     };
+//   };
+  
+//   const mapDispatchToProps = (dispatch) => {
+//     return {
+//       placeOrder: (product) => dispatch(placeOrder(product)),
+//     };
+//   };
+  
+//   export default connect(mapStateToProps)(Checkout);
+
+  export default Checkout;
