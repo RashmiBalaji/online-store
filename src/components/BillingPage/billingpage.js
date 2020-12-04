@@ -75,7 +75,7 @@ function BillingPage(props) {
     pathname:"/orders"
 }} style={{textDecoration:'none'}}> */}
             <button
-              style={{ width: "100px", margin: "5px 10px 10px 10px" }}
+              style={{ width: "100px", margin: "5px 10px 10px 10px", backgroundColor:"#4791db", color:"white", borderRadius: "4px", fontSize:"15px"}}
               variant="contained"
               TYPE="submit"
               size="large"

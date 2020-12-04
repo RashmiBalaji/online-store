@@ -74,6 +74,7 @@ function Checkout (props) {
 
     
     <>
+  {data.length >0 &&(
     <div style={{paddingTop:"10vh"}}>
       <h2 className="checkout" >Personal Information</h2>
       {/* <Formik
@@ -137,7 +138,7 @@ function Checkout (props) {
               style={{ width: "100px", margin: "5px 20px 10px 20px" }}
               variant="contained"
               size="large"
-              color="primary"
+              color="secondary"
               href="/"
             >
               CANCEL
@@ -146,7 +147,9 @@ function Checkout (props) {
     pathname:"/billing"
 }} style={{textDecoration:'none'}}> */}
             <button
-              style={{ width: "100px", margin: "5px 10px 10px 10px" }}
+              style={{ width: "100px", margin: "5px 10px 10px 10px" , backgroundColor:"#4791db", color:"white", borderRadius: "4px", fontSize:"15px"
+
+              }}
               type="submit"
               variant="contained"
               size="large"
@@ -205,6 +208,16 @@ function Checkout (props) {
             </div>
             </form>  */}
       </div>
+  )} 
+  {data.length === 0 && (
+      <>
+      <h3 style={{paddingTop:"20vh", marginLeft:"10vh"}}>No items yet in cart. Please add items to cart to continue shopping</h3>
+
+      <Button style={{margin:"5vh 0vh 0vh 10vh"}} variant="contained" href="/" size="small" color="primary">
+      CONTINUE SHOPPING
+    </Button>
+    </>
+  )}
     </>
   );
 };
