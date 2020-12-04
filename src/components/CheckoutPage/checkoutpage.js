@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: "wrap",
     },
   },
+  input: {
+    "&:invalid": {
+      border: "red solid 2px",
+    },
+  },
 }));
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -26,6 +31,8 @@ function Checkout(props) {
   const [firstName, setFirstName] = useState("");
   const [contact, setContact] = useState("");
   const [address, setAddress] = useState("");
+
+  const limit = 10;
 
   const [validation, setValidation] = useState(false);
 
@@ -65,18 +72,28 @@ function Checkout(props) {
             <form className={classes.root} onSubmit={handleSubmit}>
               <TextField
                 required
+                inputProps={{
+                  className: classes.input,
+                  pattern: "[a-zA-Z][a-zA-Z ]+",
+                }}
                 id="outlined-required"
                 label="Enter your first name"
                 name="firstName"
                 value={firstName}
                 variant="outlined"
+                type="text"
                 onChange={handleNameChange}
               />
               <br></br>
               <br></br>
               <TextField
+                inputProps={{
+                  className: classes.input,
+                  pattern: "[a-zA-Z][a-zA-Z ]+",
+                }}
                 id="outlined-basic"
                 label="Enter your last name"
+                type="text"
                 variant="outlined"
                 onChange={handleContactChange}
               />
@@ -84,9 +101,16 @@ function Checkout(props) {
               <br></br>
               <TextField
                 required
+                inputProps={{
+                  className: classes.input,
+                  pattern: "[0-9]",
+                  maxlength: limit,
+                  minlength: limit,
+                }}
                 id="outlined-basic"
                 name="contact"
                 value={contact}
+                type="number"
                 label="Enter your contact number"
                 onChange={handleContactChange}
                 variant="outlined"
@@ -98,6 +122,7 @@ function Checkout(props) {
                 id="outlined-multiline-static"
                 name="address"
                 value={address}
+                type="string"
                 label="Enter the shipping address"
                 multiline
                 rows={4}

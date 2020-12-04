@@ -34,17 +34,16 @@ function BillingPage(props) {
     setPassword(parseInt(e.target.value));
   }
 
+  //To check form validation on submit
   function handleSubmit(e) {
     e.preventDefault();
     if (!card || !password) {
       window.alert("Enter all required details");
     } else {
       props.placeOrder(data);
-      console.log("validation done on ORDERS form");
       setValidation(true);
     }
   }
-  console.log(data, "cart initial from billing page");
 
   return (
     <>
@@ -56,6 +55,7 @@ function BillingPage(props) {
               required
               id="outlined-required"
               label="Enter your card number here"
+              type="number"
               variant="outlined"
               value={card}
               onChange={handleCardChange}
@@ -65,6 +65,7 @@ function BillingPage(props) {
               id="outlined-required"
               label="Enter CVV here"
               variant="outlined"
+              type="number"
               value={password}
               onChange={handlePasswordChange}
             />

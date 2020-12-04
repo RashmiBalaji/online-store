@@ -17,17 +17,18 @@
 
 .individual-cart {
   display: flex;
-  margin: 5vh 5vh;
-  padding: 2vh 2vh;
+  margin: 1vh 5vh;
+  padding: 1vh 2vh;
   height: fit-content;
   list-style-type: none;
-  width: 70%;
+  width: 50%;
   border: solid 1px black;
 }
 
 .right-cart {
-  margin-left: 10vh;
+  margin-left: 5vh;
   margin-top: 0vh;
+  margin-right: 3vh;
 }
 
 .right-cart h6 {

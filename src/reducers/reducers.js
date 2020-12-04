@@ -26,11 +26,18 @@ export default (state = [], action) => {
       };
     case actionTypes.PLACE_ORDER:
       const orderedItems = state.cart.slice(0);
-      return {
-        ...state,
-        cart: [],
-        orders: [...orderedItems],
-      };
+      if (orderedItems.length > 0) {
+        return {
+          ...state,
+          cart: [],
+          orders: [...orderedItems],
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
+
     default:
       return state;
   }

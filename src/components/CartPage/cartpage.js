@@ -22,7 +22,7 @@ function CartPage(props) {
 
   const data = useSelector((store) => store.cart);
 
-  const totalPrice = data.reduce((a, b) => a + b.price * b.quantity, 0);
+  const totalPrice = (data.reduce((a, b) => a + b.price * b.quantity, 0)).toFixed(2);
 
   let addedItems = data.length ? (
     data.map((item) => {

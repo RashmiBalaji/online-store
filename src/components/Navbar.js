@@ -32,13 +32,16 @@ function NavBar() {
           <ShoppingBasketIcon
             style={{ marginRight: "5vh", marginLeft: "3vh", fontSize: "3vh" }}
           />
-          <Typography
+          
+        <Typography
             style={{ align: "center" }}
             variant="h6"
             className={classes.title}
           >
             MARKETPLACE
           </Typography>
+        
+         
 
           <div>
             <div className="hori-menu">
