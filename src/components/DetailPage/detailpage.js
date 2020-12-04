@@ -34,7 +34,7 @@ export default () => {
           <div className={classes.root}>
           <Link to={{
     pathname:"/"
-}}>
+}} style={{textDecoration:'none'}}>
             <Button
               style={{ margin: "0px 5px 10px 0px" }}
               variant="contained"

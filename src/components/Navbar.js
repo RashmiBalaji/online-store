@@ -43,6 +43,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Button from "@material-ui/core/Button";
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
 import { useSelector } from 'react-redux';
 
@@ -60,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
     const data = useSelector((store) => store.cart)
- const cartQuantity = data.length;
+ const cartQuantity = data.reduce((a,b)=>a+b.quantity,0)
   const classes = useStyles();
  
 
@@ -70,7 +71,7 @@ function NavBar() {
      
       <AppBar position="fixed">
         <Toolbar>
-         
+         <ShoppingBasketIcon style={{marginRight: '5vh', marginLeft: '3vh', fontSize:"3vh"}}/>
           <Typography style={{align:"center"}} variant="h6" className={classes.title}>
             MARKETPLACE
           </Typography>

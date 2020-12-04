@@ -48,7 +48,7 @@ function BillingPage(props) {
           <div class="buttons">
           <Link to={{
     pathname:"/orders"
-}}>
+}} style={{textDecoration:'none'}}>
             <Button
               style={{ width: "100px", margin: "5px 10px 10px 10px" }}
               variant="contained"

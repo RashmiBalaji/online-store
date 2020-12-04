@@ -79,6 +79,8 @@ function CartPage(props) {
 
   console.log(data, "cart initial from cartpage");
 
+  const totalPrice = data.reduce((a,b)=>a+(b.price*b.quantity),0)
+
   let addedItems = data.length ? (
     data.map((item) => {
       return (
@@ -107,10 +109,11 @@ function CartPage(props) {
   );
   return (
     <div class="outer-container-cart">
-        <h5>You have added following items to cart</h5>
+        <h2>You have added following items to cart</h2>
         <div className="container-cart">
         <ul className="cart-list">{addedItems}</ul>
         </div>
+        <h2>Your total cart value: {totalPrice} Euros</h2>
         <div className={classes.root}>
             <div className="buttons">
           <Button variant="contained"  style={{ margin: "0px 2vh 0px 0px" }} href="/" size="small" color="primary">
@@ -118,8 +121,7 @@ function CartPage(props) {
           </Button>
 <Link to={{
     pathname:"/checkout",
-    // state: {cartItems: addedItems}
-}}>
+}} style={{textDecoration:'none'}}>
 <Button variant="contained" size="small" color="primary">
             PROCEED TO CHECKOUT
           </Button>
