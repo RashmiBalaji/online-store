@@ -32,18 +32,20 @@ export default () => {
           <p>{inventory.description}</p>
           <h2>{`${inventory.price}  Euros`}</h2>
           <div className={classes.root}>
-          <Link to={{
-    pathname:"/"
-}} style={{textDecoration:'none'}}>
-            <Button
-              style={{ margin: "0px 5px 10px 0px" }}
-              variant="contained"
-              color="primary"
-              size="medium"
-             
+            <Link
+              to={{
+                pathname: "/",
+              }}
+              style={{ textDecoration: "none" }}
             >
-              BACK TO HOMEPAGE
-            </Button>
+              <Button
+                style={{ margin: "0px 5px 10px 0px" }}
+                variant="contained"
+                color="primary"
+                size="medium"
+              >
+                BACK TO HOMEPAGE
+              </Button>
             </Link>
           </div>
         </div>

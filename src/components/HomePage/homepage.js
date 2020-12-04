@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./homepage.css";
-import store from "../../store/configureStore.js";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../actions/cartactions.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import "./homepage.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,19 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 function HomePage(props) {
   const classes = useStyles();
-  //   useEffect(() => {
-  //     fetch("https://fakestoreapi.com/products")
-  //       .then((res) => res.json())
-  //       .then((res) => setInventories(res));
-  //   }, []);
 
-  console.log(store, "store");
-  console.log(props, "props from homepage");
   const data = useSelector((store) => store.inventories);
-  console.log(data, "data using use selector");
-
-  const cartdata = useSelector((store) => store.cart);
-  console.log(cartdata, "cart data from homepage");
 
   const inventoryList = data.map((inventory) => (
     <>
@@ -69,7 +57,6 @@ function HomePage(props) {
       <div className="container-homepage">
         <ul className="inventory-list">{inventoryList}</ul>
       </div>
-      
     </>
   );
 }

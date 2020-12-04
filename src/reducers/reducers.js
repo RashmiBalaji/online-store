@@ -1,14 +1,11 @@
-import { useSelector } from "react-redux";
 import { actionTypes } from "../actions/cartactions.js";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = [], action) => {
-  console.log(state, "from reducer add to cart");
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const productInCart = state.cart.find((p) => p.id === action.product.id);
       if (!productInCart) {
-        console.log(action.product, "product being added to cart");
         return {
           ...state,
           cart: [...state.cart, action.product],
@@ -38,7 +35,3 @@ export default (state = [], action) => {
       return state;
   }
 };
-
-//const store = createStore(cartReducer)
-
-//export default CartReducer;

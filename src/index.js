@@ -1,30 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore'
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import db from "./data.json";
 
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import db from './data.json'
-//import store from './components/HomePage/homepage.js'
-console.log(db,"db from mockdata file ")
 const initialState = {
-inventories:db.items,
+  inventories: db.items,
   cart: [],
   underPlacement: [],
-  orders:[]
-}
+  orders: [],
+};
 
-const store = configureStore(initialState)
+const store = configureStore(initialState);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

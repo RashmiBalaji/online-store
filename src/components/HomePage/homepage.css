@@ -3,13 +3,12 @@
 }
 
 .container-homepage {
-    display:flex;
-    flex-direction:column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-left: 10vh;
-    margin-right: 10vh;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 10vh;
+  margin-right: 10vh;
 }
 
 .inventory-list {
@@ -20,27 +19,25 @@
 }
 
 .item-tile {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   height: 50vh;
   width: 30vh;
   text-align: center;
-  /* border: 2px solid black; */
   margin: 5vh 10vh;
 }
 
 .item-tile h4 {
-    margin-bottom: 5px;
-    
+  margin-bottom: 5px;
 }
 
 .item-tile h5 {
-    margin-bottom: 8px;
-margin-top:0px;
-font-style: italic;
-font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 0px;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .details {
-    text-decoration: none;
+  text-decoration: none;
 }
